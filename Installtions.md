@@ -1,67 +1,31 @@
-**Install brave**
+**Install curl**
 
 ```
 sudo apt update
-```
-```
 sudo apt install curl
 ```
+
+**Install vim**
+
 ```
-sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg \
-https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+sudo apt  update
+sudo apt install vim
 ```
-```
-sudo curl -fsSLo /etc/apt/sources.list.d/brave-browser-release.sources \
-https://brave-browser-apt-release.s3.brave.com/brave-browser.sources
-```
+
+**Install ifconfig**
 ```
 sudo apt update
+sudo apt install net-tools
 ```
-```
-sudo apt install brave-browser
-```
-
-
-
-
-
-
-
-**Install vscode**
-
-```
-sudo apt update
-```
-```
-sudo apt install wget gpg
-```
-```
-wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /usr/share/keyrings/packages.microsoft.gpg > /dev/null
-```
-```
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
-```
-```
-sudo apt update
-```
-```
-sudo apt install code
-```
-
-
-
-
-
 
 **Install git and gh**
 
 ```
 sudo apt update
-```
-```
 sudo apt install git
 ```
 ```
+sudo apt update
 sudo apt install gh
 ```
 
@@ -72,21 +36,46 @@ git config --global user.name "$(gh api user -q '.name // .login')"
 git config --global user.email "$(gh api user -q 'if .email then .email else "\(.id)+\(.login)@users.noreply.github.com" end')"
 ```
 
-**Install vim**
-
+**Install wget and gpg**
 ```
-sudo apt  update
-```
-
-```
-sudo apt install vim
+sudo apt update
+sudo apt install wget gpg
 ```
 
-**Install ifconfig**
+**Install brave**
 ```
-sudo apt install net-tools
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg \
+https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+```
+```
+sudo curl -fsSLo /etc/apt/sources.list.d/brave-browser-release.sources \
+https://brave-browser-apt-release.s3.brave.com/brave-browser.sources
+```
+```
+sudo apt update
+sudo apt install brave-browser
 ```
 
+**Install vscode**
+
+
+```
+sudo apt update
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /usr/share/keyrings/packages.microsoft.gpg > /dev/null
+```
+```
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
+```
+```
+sudo apt update
+sudo apt install code
+```
+
+**Install VLC**
+```
+sudo apt update
+sudo apt install vlc
+```
 
 **Install Docker**
 
@@ -127,16 +116,36 @@ sudo apt update
 sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
+**To remove the docker dependency on sudo previlages**
 
+Add your user to the docker group
+```
+sudo usermod -aG docker $USER
+```
+Apply the new group membership
+```
+newgrp docker
+```
+to verify it worked or not use
+```
+groups
+```
+You should see docker listed.
 
+if not, then try:
+```
+ls -l /var/run/docker.sock
+```
+It should show docker as the group owner
+```
+sudo systemctl restart docker
+```
 
 
 **Install Anydesk**
 
 ```
 sudo apt update
-```
-```
 sudo apt install -y ca-certificates curl gnupg
 ```
 ```
@@ -147,8 +156,6 @@ echo "deb http://deb.anydesk.com/ all main" | sudo tee /etc/apt/sources.list.d/a
 ```
 ```
 sudo apt update
-```
-```
 sudo apt install anydesk
 ```
 
@@ -157,8 +164,6 @@ sudo apt install anydesk
 
 ```
 sudo apt update
-```
-```
 sudo apt install openssh-server
 ```
 ```
@@ -216,6 +221,14 @@ HandleLidSwitchDocked=ignore
 ```
 sudo systemctl restart systemd-logind
 ```
+
+
+**Install Telegram**
+```
+sudo snap install telegram-desktop
+```
+
+
 To Change to mac theme go to 
 https://github.com/SamuelKurianRoy/Linux_installations/blob/main/Mac_theme.md
 
