@@ -203,7 +203,19 @@ sudo systemctl restart ssh
 
 Also change the lock screen settings
 
-
+then change the closing lid settings by using the following commands
+```
+sudo nano /etc/systemd/logind.conf
+```
+Find these lines and set the corresponding values
+```
+HandleLidSwitch=ignore
+HandleLidSwitchExternalPower=ignore
+HandleLidSwitchDocked=ignore
+```
+```
+sudo systemctl restart systemd-logind
+```
 To Change to mac theme go to 
 https://github.com/SamuelKurianRoy/Linux_installations/blob/main/Mac_theme.md
 
