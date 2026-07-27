@@ -1,4 +1,4 @@
-How to install brave
+**Install brave**
 
 ```
 sudo apt update
@@ -27,7 +27,7 @@ sudo apt install brave-browser
 
 
 
-How to install vscode
+**Install vscode**
 
 ```
 sudo apt update
@@ -53,7 +53,7 @@ sudo apt install code
 
 
 
-Install git and gh 
+**Install git and gh**
 
 ```
 sudo apt update
@@ -72,7 +72,7 @@ git config --global user.name "$(gh api user -q '.name // .login')"
 git config --global user.email "$(gh api user -q 'if .email then .email else "\(.id)+\(.login)@users.noreply.github.com" end')"
 ```
 
-Install vim 
+**Install vim**
 
 ```
 sudo apt  update
@@ -82,13 +82,13 @@ sudo apt  update
 sudo apt install vim
 ```
 
-Install ifconfig
+**Install ifconfig**
 ```
 sudo apt install net-tools
 ```
 
 
-Install Docker
+**Install Docker**
 
 ```
 sudo apt update
@@ -131,7 +131,7 @@ sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin dock
 
 
 
-How to install Anydesk
+**Install Anydesk**
 
 ```
 sudo apt update
@@ -153,7 +153,7 @@ sudo apt install anydesk
 ```
 
 
-Enable ssh access
+**Enable ssh access**
 
 ```
 sudo apt update
