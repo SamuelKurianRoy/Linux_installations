@@ -1,4 +1,4 @@
-**Install curl**
+### Install curl
 
 ```
 sudo apt update
@@ -6,26 +6,26 @@ sudo apt install curl
 ```
 
 
-**Install wget and gpg**
+### Install wget and gpg
 ```
 sudo apt update
 sudo apt install wget gpg
 ```
 
-**Install vim**
+### Install vim
 
 ```
 sudo apt  update
 sudo apt install vim
 ```
 
-**Install ifconfig**
+### Install ifconfig
 ```
 sudo apt update
 sudo apt install net-tools
 ```
 
-**Install git and gh**
+### Install git and gh
 
 ```
 sudo apt update
@@ -58,7 +58,7 @@ sudo apt update
 sudo apt install gh -y
 ```
 
-**Install brave**
+### Install brave
 ```
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg \
 https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
@@ -72,7 +72,7 @@ sudo apt update
 sudo apt install brave-browser
 ```
 
-**Install vscode**
+### Install vscode
 
 
 ```
@@ -87,13 +87,13 @@ sudo apt update
 sudo apt install code
 ```
 
-**Install VLC**
+### Install VLC
 ```
 sudo apt update
 sudo apt install vlc
 ```
 
-**Install Docker**
+### Install Docker
 
 ```
 sudo apt update
@@ -132,7 +132,7 @@ sudo apt update
 sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
-**To remove the docker dependency on sudo previlages**
+#### To remove the docker dependency on sudo previlages
 
 Add your user to the docker group
 ```
@@ -158,7 +158,7 @@ sudo systemctl restart docker
 ```
 
 
-**Install Anydesk**
+### Install Anydesk
 
 ```
 sudo apt update
@@ -176,7 +176,7 @@ sudo apt install anydesk
 ```
 
 
-**Enable ssh access**
+### Enable ssh access
 
 ```
 sudo apt update
@@ -239,7 +239,7 @@ sudo systemctl restart systemd-logind
 ```
 
 
-**Install Telegram**
+### Install Telegram
 ```
 sudo snap install telegram-desktop
 ```
