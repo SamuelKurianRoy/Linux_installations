@@ -24,6 +24,11 @@ sudo apt install vim
 sudo apt update
 sudo apt install net-tools
 ```
+### To install c++ neccessaries
+
+```
+sudo apt install build-essential
+```
 
 ### Install git and gh
 
