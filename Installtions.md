@@ -5,6 +5,13 @@ sudo apt update
 sudo apt install curl
 ```
 
+
+**Install wget and gpg**
+```
+sudo apt update
+sudo apt install wget gpg
+```
+
 **Install vim**
 
 ```
@@ -35,11 +42,20 @@ git config --global user.name "$(gh api user -q '.name // .login')"
 ```
 git config --global user.email "$(gh api user -q 'if .email then .email else "\(.id)+\(.login)@users.noreply.github.com" end')"
 ```
+#### To get the latest version of gh
 
-**Install wget and gpg**
+1. Add the GitHub CLI official GPG key and repository
+```
+(type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) \
+&& sudo mkdir -p -m 755 /etc/apt/keyrings \
+&& wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
+&& sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+```
+2. Update your package list and install the latest version
 ```
 sudo apt update
-sudo apt install wget gpg
+sudo apt install gh -y
 ```
 
 **Install brave**
