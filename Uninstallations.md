@@ -1,4 +1,4 @@
-**To Uninstall Thunderbird mail**
+### To Uninstall Thunderbird mail
 
 ```
 sudo apt remove thunderbird
