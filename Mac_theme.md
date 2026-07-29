@@ -136,6 +136,14 @@ Takes effect immediately after reopening the terminal. No reboot needed.
 
 ---
 
+### 10. To Auto-hide the Taskbar 
+
+go to 
+```
+Settings  >> Appearance (left sidebar)
+Scroll down to the Dock section (near the bottom)
+Toggle "Auto-hide the Dock" on
+```
 ## Current State
 - ✅ WhiteSur GTK theme applied (Light)
 - ✅ WhiteSur icons applied
