@@ -1,3 +1,6 @@
+### Open a remote server path in vs-code directly
+
+
 open 
 
 ```
@@ -27,3 +30,9 @@ source ~/.bashrc
 ```
 
 open a folder in vscode the same way you do scp
+
+Example usage
+```
+remote 124:/home/mtx003/img
+remote mtx003@192.168.1.1:/home/mtx003/img
+```
