@@ -249,6 +249,10 @@ sudo systemctl restart systemd-logind
 sudo snap install telegram-desktop
 ```
 
+### Install Chromium
+```
+sudo snap install chromium
+```
 
 To Change to mac theme go to 
 https://github.com/SamuelKurianRoy/Linux_installations/blob/main/Mac_theme.md
