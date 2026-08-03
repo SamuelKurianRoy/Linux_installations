@@ -118,10 +118,26 @@ echo "    gnome-extensions prefs blur-my-shell@aunetx"
 echo "  — go to the Panel tab, turn blur ON, and set its background style"
 echo "  to 'Transparent'. Adjust the blur strength slider to taste."
 
+
 echo ""
-echo "Done through Part 6 (Fonts) plus Auto-hide Dock (Part 10)."
-echo "Terminal Font Fix, Window Control Buttons, Wallpaper, and Hostname"
-echo "Change were intentionally skipped."
+echo "=== Part 12: Wallpaper ==="
+WALLPAPER_URL="https://github.com/SamuelKurianRoy/Linux_installations/blob/main/Themes/macos-big-sur-wallpaper-1-scaled.jpg?raw=true"
+WALLPAPER_PATH="$BUILD_DIR/macos-big-sur-wallpaper-1-scaled.jpg"
+if wget -O "$WALLPAPER_PATH" "$WALLPAPER_URL"; then
+    ABS_WALLPAPER_PATH="$(realpath "$WALLPAPER_PATH")"
+    gsettings set org.gnome.desktop.background picture-uri "file://$ABS_WALLPAPER_PATH"
+    gsettings set org.gnome.desktop.background picture-uri-dark "file://$ABS_WALLPAPER_PATH" 2>/dev/null || true
+    gsettings set org.gnome.desktop.background picture-options "zoom"
+    echo "  Wallpaper downloaded to $ABS_WALLPAPER_PATH and set."
+else
+    echo "  Error: failed to download wallpaper from $WALLPAPER_URL"
+fi
+
+echo ""
+echo "Done through Part 6 (Fonts) plus Auto-hide Dock (Part 10), Blur my"
+echo "Shell (Part 11), and Wallpaper (Part 12)."
+echo "Terminal Font Fix, Window Control Buttons, and Hostname Change were"
+echo "intentionally skipped."
 echo ""
 echo "Restart GNOME Shell to see the shell/top-bar theme take effect:"
 echo "  Alt+F2 -> r -> Enter (X11), or log out/in (Wayland)."
