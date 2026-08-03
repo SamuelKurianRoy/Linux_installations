@@ -254,6 +254,11 @@ sudo snap install telegram-desktop
 sudo snap install chromium
 ```
 
+###To install ffmpeg
+```
+sudo apt install ffmpeg
+```
+
 To Change to mac theme go to 
 https://github.com/SamuelKurianRoy/Linux_installations/blob/main/Mac_theme.md
 
