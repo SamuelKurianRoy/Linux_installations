@@ -93,9 +93,10 @@ sudo apt install code
 ```
 
 ### Install VLC
+
+We need to install vlc by snap if we use apt it would be missing ```live555``` library which means we won't be able to play rtsp streams in vlc.
 ```
-sudo apt update
-sudo apt install vlc
+sudo snap install vlc
 ```
 
 ### Install Docker
