@@ -260,6 +260,11 @@ sudo snap install chromium
 sudo apt install ffmpeg
 ```
 
+### Install pip
+```
+sudo apt install python3-pip
+```
+
 To Change to mac theme go to 
 https://github.com/SamuelKurianRoy/Linux_installations/blob/main/Mac_theme.md
 
