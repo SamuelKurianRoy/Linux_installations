@@ -4,7 +4,7 @@ nano ~/.lan_listener.sh
 
 ```
 #!/bin/bash
-while true; do nc -l -p 9999 | xargs -I {} notify-send "LAN Message" "{}"; done
+while true; do nc -l -p 9999 | xargs -I {} bash -c 'notify-send "LAN Message" "{}" && paplay /usr/share/sounds/freedesktop/stereo/message.oga'; done
 ```
 
 ```
