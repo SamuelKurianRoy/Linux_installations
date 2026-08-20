@@ -63,6 +63,12 @@ sudo apt update
 sudo apt install gh -y
 ```
 
+### Install tree
+
+```
+sudo apt install tree
+```
+
 ### Install brave
 ```
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg \
