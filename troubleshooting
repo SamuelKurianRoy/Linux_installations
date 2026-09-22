@@ -1,0 +1,9 @@
+## If the ssh is not working even after entering correct username and password
+export IP=$ip
+ssh-keygen -R $IP
+sudo ip neigh flush $IP
+
+
+## To check the fingerprint of the device
+
+ssh-keyscan -t ed25519 $IP 2>/dev/null | ssh-keygen -lf -

@@ -166,6 +166,10 @@ remote() {
     local path="${1#*:}"
     code --folder-uri "vscode-remote://ssh-remote+${host}${path}"
 }
+if [ -f /usr/share/bash-completion/completions/scp ]; then
+    source /usr/share/bash-completion/completions/scp
+fi
+complete -F _scp remote
 # <<< vscode remote helper <<<
 EOF
 fi
@@ -201,10 +205,62 @@ explorer() {
     nohup nautilus "$abs_path" >/dev/null 2>&1 &
     disown
 }
-# <<< explorer helper <<<
+# <<< explorer helper <
+EOF
+fi
+
+# ------------------------------------------------------------------
+# Add the vpu_usage() helper to ~/.bashrc (idempotent)
+# Shows established SSH (port 22) connections on a remote host:
+#   vpu_usage <ip>
+# ------------------------------------------------------------------
+VPU_MARKER="# >>> vpu_usage helper >>>"
+
+if grep -qF "$VPU_MARKER" "$BASHRC" 2>/dev/null; then
+    echo "==> vpu_usage() helper already present in ~/.bashrc, skipping."
+else
+    echo "==> Adding vpu_usage() helper to ~/.bashrc..."
+    cat >> "$BASHRC" <<'EOF'
+
+# >>> vpu_usage helper >>>
+# Shows established SSH (port 22) connections on a remote host:
+#   vpu_usage <ip>
+vpu_usage() {
+    local fp_cfg="/home/samuel/.fingerprint.config"
+    local ip_cfg="/home/samuel/.mapper.config"
+    local ip fp name
+
+    ssh "$1" "ss -tn state established sport :22" | awk 'NR>1 {print $4}' | sed -E 's/:[0-9]+$//' | sort -u |
+    while IFS= read -r ip; do
+        [[ -z "$ip" ]] && continue
+        name=""
+
+        # 1) fingerprint lookup (scan runs on the VPU; -n keeps ssh from eating the loop's stdin)
+        fp=$(ssh -n "$1" "ssh-keyscan -T 2 -t ed25519 $ip 2>/dev/null | ssh-keygen -lf - 2>/dev/null" | awk '{print $2}')
+        if [[ -n "$fp" ]]; then
+            name=$(grep -oP "\"\Q${fp}\E\":\s*\"\K[^\"]+" "$fp_cfg" 2>/dev/null)
+        fi
+
+        # 2) fall back to the IP mapping if there was no fingerprint or no match
+        if [[ -z "$name" ]]; then
+            name=$(grep -oP "\"$(printf '%s' "$ip" | sed 's/\./\\./g')\":\s*\"\K[^\"]+" "$ip_cfg" 2>/dev/null)
+        fi
+
+        if [[ -n "$name" ]]; then
+            echo "$name is using the vpu"
+        else
+            echo "unknown client: ip=$ip fingerprint=${fp:-none} is using the vpu"
+        fi
+    done
+}
+if [ -f /usr/share/bash-completion/completions/ssh ]; then
+    source /usr/share/bash-completion/completions/ssh
+fi
+complete -F _ssh vpu_usage
+# <<< vpu_usage helper <
 EOF
 fi
 
 echo
-echo "All done. Run 'source ~/.bashrc' (or open a new terminal) to use remote() and explorer()."
+echo "All done. Run 'source ~/.bashrc' (or open a new terminal) to use remote(), explorer(), and vpu_usage()."
 echo "Shortcuts should be active immediately — no logout needed."
